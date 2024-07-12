@@ -32,6 +32,7 @@ public:
     string getDuracion();
     string getGenero();
     vector<float> getCalificaciones();
+    virtual string getTipoVideo();
 
     void setID(int id);
     void setNombre(string nombre);
@@ -40,7 +41,7 @@ public:
 
     // Métodos especializados
     void mostrarVideo();
-    void agregarCalificacion();
+    void agregarCalificacion(float calificacion);
 };
 
 #endif
