@@ -10,31 +10,34 @@ class Video
 {
 protected:
     // Atributos protegidos
-    int id;
+    string id;
     float califiacionPromedio;
     string nombre;
     string duracion;
     string genero;
+    string datosString;
     vector<float> calificaciones;
 protected:
-    // Método protegido
+    // Métodos protegidos
     float calcularPromedio();
+    virtual void datosToString();
 
 public:
     // Constructores
     Video();
-    Video(int id, string nombre, string duracion, string genero);
+    Video(string id, string nombre, string duracion, string genero);
 
     // Getters y setters
-    int getID();
+    string getID();
     float getCalificacionPromedio();
     string getNombre();
     string getDuracion();
     string getGenero();
+    string getDatosString();
     vector<float> getCalificaciones();
     virtual string getTipoVideo();
 
-    void setID(int id);
+    void setID(string id);
     void setNombre(string nombre);
     void setDuracion(string duracion);
     void setGenero(string genero);
