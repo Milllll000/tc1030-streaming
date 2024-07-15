@@ -4,4 +4,5 @@ class Pelicula : public Video
 {
     public:
         Pelicula();
+        Pelicula(string id, string nombre, string duracion, string genero);
 };
