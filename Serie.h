@@ -1,18 +1,23 @@
 #include "Episodio.h"
 #include "Video.h"
 
-#include <vector>
+#include <list>
 
 using namespace std;
 
 class Serie : public Video
 {
 private:
-    vector<Episodio> episodios;
+    list<Episodio> episodios;
+    int numEpisodios;
+
+protected:
+    void datosToString();
 
 public:
     Serie();
-    Serie(vector<Episodio> episodios);
-    void agregarEpisodio();
+    Serie(string id, string nombre, string genero, list<Episodio> episodios);
+    void agregarEpisodio(Episodio aAgregar);
     void mostrarEpisodios();
+    string getTipoVideo();
 };

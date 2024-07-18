@@ -1,6 +1,15 @@
 #include "Pelicula.h"
 #include "Video.h"
 
+#include <iostream>
+
+using namespace std;
+
+string Pelicula::getTipoVideo()
+{
+    return "Pelicula";
+}
+
 Pelicula::Pelicula() : Video()
 {
     id = "0000";

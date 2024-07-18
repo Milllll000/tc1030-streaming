@@ -2,7 +2,10 @@
 
 class Pelicula : public Video
 {
-    public:
-        Pelicula();
-        Pelicula(string id, string nombre, string duracion, string genero);
+private:
+    string getTipoVideo();
+
+public:
+    Pelicula();
+    Pelicula(string id, string nombre, string duracion, string genero);
 };
