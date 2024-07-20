@@ -1,5 +1,9 @@
-#include <string>
+#include "Serie.h"
+#include "Pelicula.h"
+
 #include <fstream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -8,15 +12,19 @@ using namespace std;
 
 class Sistema
 {
+    private:
+        vector<Pelicula>peliculas;
+        vector<Serie>series;
     public:
         Sistema();
-        Sistema(fstream peliculas, fstream series);
 
+        void calificar();
+        void cargarArchivo(string direccion);
+        void guardarAArchivo(string direccion, string datos);
+        void guardarPelicula(Pelicula &pelicula);
+        // void guardarSerie(Serie serie);
         void mostrarPorCalificacion(float calif);
         void mostrarPorGenero(string genero);
-        void cargarArchivo(string direccion);
-        void calificar();
-        void guardarAArchivo(string direccion, string datos);
 
 };
 

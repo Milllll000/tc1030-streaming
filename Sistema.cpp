@@ -12,6 +12,29 @@ Sistema::Sistema()
 
 void Sistema::mostrarPorCalificacion(float calif)
 {
+    if (peliculas.size() == 0)
+    {
+        cout << "¡No hay películas!" << endl;
+    }
+    else
+    {
+        for (int i=0; i<peliculas.size(); ++i)
+        {
+            peliculas[i].mostrarVideo();
+        }
+    }
+    
+    if (series.size() == 0)
+    {
+        cout << "¡No hay series!" << endl;
+    }
+    else
+    {
+        for (int i=0; i<series.size(); ++i)
+        {
+            series[i].mostrarVideo();
+        }
+    }
 }
 
 void Sistema::mostrarPorGenero(string genero)
@@ -44,4 +67,9 @@ void Sistema::guardarAArchivo(string direccion, string datos)
     archivo.open(direccion, ios::app);
     archivo << datos << endl;
     archivo.close();
+}
+
+void Sistema::guardarPelicula(Pelicula &pelicula)
+{
+    peliculas.push_back(pelicula);
 }
