@@ -15,14 +15,19 @@ class Sistema
     private:
         vector<Pelicula>peliculas;
         vector<Serie>series;
+
+    private:
+
+        vector<Pelicula *> getVideoCalif(float calif);
+
     public:
         Sistema();
 
         void calificar();
         void cargarArchivo(string direccion);
         void guardarAArchivo(string direccion, string datos);
-        void guardarPelicula(Pelicula &pelicula);
-        // void guardarSerie(Serie serie);
+        void guardarASistema(Pelicula &pelicula);
+        void guardarASistema(Serie &serie);
         void mostrarPorCalificacion(float calif);
         void mostrarPorGenero(string genero);
 
