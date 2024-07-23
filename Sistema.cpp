@@ -5,20 +5,20 @@
 
 using namespace std;
 
-vector<Pelicula *> Sistema::getVideoCalif(float calif)
+vector<Video *> Sistema::getVideoCalif(float calif)
 // Busca la película que tiene la calificación solicitada o mayor
 // calif debe de ser igual o mayor a 0
 {
     cout << "Función se llama" << endl;
-    vector<Pelicula *> cumplen;
-    for (int i=0; i<peliculas.size(); ++i)
+    vector<Video *> cumplen;
+    for (int i=0; i<videos.size(); ++i)
     {
         cout << "Loop inicia" << endl;
-        // Si la pelicula cumple la condición, se agrega al vector
-        if (peliculas[i].getCalificacionPromedio() >= calif)
+        // Si el video cumple la condición, se agrega al vector
+        if (videos[i]->getCalificacionPromedio() >= calif)
         {
             cout << "Cumple condición" << endl;
-            cumplen.push_back(&peliculas[i]);
+            cumplen.push_back(videos[i]);
         }
     }
     cout << "Loop finaliza" << endl;
@@ -34,10 +34,10 @@ Sistema::Sistema()
 
 void Sistema::mostrarPorCalificacion(float calif)
 {
-    vector <Pelicula *> cumplenPel = getVideoCalif(calif);
-    vector <Pelicula *> cumplenSer;
+    vector <Video *> cumplenPel = getVideoCalif(calif);
+    vector <Video *> cumplenSer;
     
-    if (peliculas.size() > 0 && cumplenPel.size() > 0)
+    if (videos.size() > 0 && cumplenPel.size() > 0)
     {
         cout << "Sí hay películas." << endl;
         
@@ -54,9 +54,9 @@ void Sistema::mostrarPorCalificacion(float calif)
         cout << "¡No hay películas!" << endl;
     }
     
-    if (series.size() > 0 && cumplenSer.size() > 0)
+    if (videos.size() > 0 && cumplenSer.size() > 0)
     {
-        cout << "Sí hay series." << endl;
+        cout << "Sí hay videos." << endl;
         
         for (int i=0; i<cumplenSer.size(); ++i)
         {
@@ -104,12 +104,7 @@ void Sistema::guardarAArchivo(string direccion, string datos)
     archivo.close();
 }
 
-void Sistema::guardarASistema(Pelicula &pelicula)
+void Sistema::guardarASistema(Video &video)
 {
-    peliculas.push_back(pelicula);
-}
-
-void Sistema::guardarASistema(Serie &serie)
-{
-    series.push_back(serie);
+    videos.push_back(&video);
 }

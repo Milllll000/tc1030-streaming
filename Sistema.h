@@ -13,12 +13,11 @@ using namespace std;
 class Sistema
 {
     private:
-        vector<Pelicula>peliculas;
-        vector<Serie>series;
+        vector<Video *> videos;
 
     private:
 
-        vector<Pelicula *> getVideoCalif(float calif);
+        vector<Video *> getVideoCalif(float calif);
 
     public:
         Sistema();
@@ -26,8 +25,7 @@ class Sistema
         void calificar();
         void cargarArchivo(string direccion);
         void guardarAArchivo(string direccion, string datos);
-        void guardarASistema(Pelicula &pelicula);
-        void guardarASistema(Serie &serie);
+        void guardarASistema(Video &video);
         void mostrarPorCalificacion(float calif);
         void mostrarPorGenero(string genero);
 

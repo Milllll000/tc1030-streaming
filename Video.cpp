@@ -35,7 +35,7 @@ void Video::datosToString()
 {
     // Convierte los datos del video a string para poder mostrarse en pantalla y guardar
     // en un archivo de texto
-    datosString = id + "\t" + nombre + "\t" + duracion + "\t" + genero + "\t" + getTipoVideo() + "\t" + to_string(califiacionPromedio);
+    datosString = id + "\t" + nombre + "\t" + genero + "\t" + getTipoVideo() + "\t" + duracion + "\t" + to_string(califiacionPromedio);
 }
 
 // Constructores
