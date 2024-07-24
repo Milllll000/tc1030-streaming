@@ -6,7 +6,7 @@ class Episodio : public Video
 private:
     int continuidad;
 
-protected:
+private:
     void datosToString();
 
 public:

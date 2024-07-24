@@ -14,24 +14,28 @@ Serie::Serie() : Video()
     datosToString();
 }
 
-Serie::Serie(string id, string nombre, string genero, list<Episodio> episodios) : Video()
+Serie::Serie(string id, string nombre, string genero) : Video()
 {
     this->id = id;
     this->nombre = nombre;
     this->genero = genero;
     califiacionPromedio = calcularPromedio();
-    this->episodios = episodios;
     numEpisodios = this->episodios.size();
     datosToString();
 }
 
-void Serie::agregarEpisodio(Episodio aAgregar)
+void Serie::agregarEpisodio(Episodio agregar)
 {
-    
+    episodios.push_back(&agregar);
 }
 
 void Serie::mostrarEpisodios()
 {
+    list<Episodio *>::iterator aux = episodios.begin();
+    while (*aux != nullptr)
+    {
+        (*aux)->mostrarVideo();
+    }
 }
 
 string Serie::getTipoVideo()

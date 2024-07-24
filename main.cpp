@@ -32,8 +32,12 @@ int main(int argc, char const *argv[])
         int input = 0;
         
         cout << "Sistema de películas y series en la plataforma de streaming Teneiga." << endl;
-        cout << "Para mostrar todo el contenido disponible, ingrese 1" << endl;
-        cout << "Para mostrar el contenido que tenga una calificación igual o mayor a la ingresada, ingrese 2" << endl;
+        cout << "Para mostrar todo el contenido disponible, ingrese 1." << endl;
+        cout << "Para mostrar el contenido que tenga una calificación igual o mayor a la ingresada, ingrese 2." << endl;
+        cout << "Para mostrar contenido por género, ingrese 3." << endl;
+        cout <<  "Para mostrar sólo películas, ingrese 4." << endl;
+        cout <<  "Para mostrar sólo series, ingrese 5." << endl;
+        cout << "Para mostrar episodios de una serie, ingrese 6." << endl;
 
         cin >> input;
 
@@ -66,6 +70,24 @@ int main(int argc, char const *argv[])
             {
                 cout << e.what() << endl;
             }
+            break;
+        }
+        case 4:
+        {
+            sistema.mostrarPorTIpo('1');
+            break;
+        }
+        case 5:
+        {
+            sistema.mostrarPorTIpo('2');   
+            break;
+        }
+        case 6:
+        {
+            string input;
+            sistema.mostrarPorTIpo('2');
+            cout << "Ingrese ID de la serie deseada: ";
+            cin >> input;
             break;
         }
         default:

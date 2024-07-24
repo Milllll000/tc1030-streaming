@@ -9,7 +9,7 @@ using namespace std;
 class Serie : public Video
 {
 private:
-    list<Episodio> episodios;
+    list<Episodio *> episodios;
     int numEpisodios;
 
 protected:
@@ -17,8 +17,8 @@ protected:
 
 public:
     Serie();
-    Serie(string id, string nombre, string genero, list<Episodio> episodios);
-    void agregarEpisodio(Episodio aAgregar);
+    Serie(string id, string nombre, string genero);
+    void agregarEpisodio(Episodio agregar);
     void mostrarEpisodios();
     string getTipoVideo();
 };

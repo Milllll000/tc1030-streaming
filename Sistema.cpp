@@ -12,16 +12,30 @@ vector<Video *> Sistema::getVideo(float calif)
 {
     cout << "Función se llama" << endl;
     vector<Video *> cumplen;
-    for (int i=0; i<videos.size(); ++i)
+    
+    // Para películas
+    for (int i=0; i<peliculas.size(); ++i)
     {
         cout << "Loop inicia" << endl;
         // Si el video cumple la condición, se agrega al vector
-        if (videos[i]->getCalificacionPromedio() >= calif)
+        if (peliculas[i]->getCalificacionPromedio() >= calif)
         {
             cout << "Cumple condición" << endl;
-            cumplen.push_back(videos[i]);
+            cumplen.push_back(peliculas[i]);
         }
     }
+    // Para series
+    for (int i=0; i<series.size(); ++i)
+    {
+        cout << "Loop inicia" << endl;
+        // Si el video cumple la condición, se agrega al vector
+        if (series[i]->getCalificacionPromedio() >= calif)
+        {
+            cout << "Cumple condición" << endl;
+            cumplen.push_back(series[i]);
+        }
+    }
+
     cout << "Loop finaliza" << endl;
     cout << "Función finaliza" << endl;
 
@@ -34,14 +48,27 @@ vector<Video *> Sistema::getVideo(string genero)
 {
     cout << "Función se llama" << endl;
     vector<Video *> cumplen;
-    for (int i=0; i<videos.size(); ++i)
+
+    // Para películas
+    for (int i=0; i<peliculas.size(); ++i)
     {
         cout << "Loop inicia" << endl;
         // Si el video cumple la condición, se agrega al vector
-        if (videos[i]->getGenero() == genero)
+        if (peliculas[i]->getGenero() == genero)
         {
             cout << "Cumple condición" << endl;
-            cumplen.push_back(videos[i]);
+            cumplen.push_back(peliculas[i]);
+        }
+    }
+    // Para series
+    for (int i=0; i<series.size(); ++i)
+    {
+        cout << "Loop inicia" << endl;
+        // Si el video cumple la condición, se agrega al vector
+        if (series[i]->getGenero() == genero)
+        {
+            cout << "Cumple condición" << endl;
+            cumplen.push_back(series[i]);
         }
     }
     cout << "Loop finaliza" << endl;
@@ -50,18 +77,78 @@ vector<Video *> Sistema::getVideo(string genero)
     return cumplen;
 }
 
+vector<Pelicula *> Sistema::getPeliculas()
+{
+    return peliculas;
+}
+
+vector<Serie *> Sistema::getSeries()
+{
+    return series;
+}
+
+void Sistema::imprimir(vector<Video *> seleccionado)
+{
+    if (seleccionado.size() > 0)
+    {
+        cout << "Sí hay videos." << endl;
+        
+        for (int i=0; i<seleccionado.size(); ++i)
+        {
+            seleccionado[i]->mostrarVideo();
+        }
+    }
+    else
+    {
+        cout << "¡No hay videos!" << endl;
+    }
+}
+
+void Sistema::imprimir(vector<Pelicula *> seleccionado)
+{
+    if (seleccionado.size() > 0)
+    {
+        cout << "Sí hay películas." << endl;
+        
+        for (int i=0; i<seleccionado.size(); ++i)
+        {
+            seleccionado[i]->mostrarVideo();
+        }
+    }
+    else
+    {
+        cout << "¡No hay películas!" << endl;
+    }
+}
+
+void Sistema::imprimir(vector<Serie *> seleccionado)
+{
+    if (seleccionado.size() > 0)
+    {
+        cout << "Sí hay series." << endl;
+        
+        for (int i=0; i<seleccionado.size(); ++i)
+        {
+            seleccionado[i]->mostrarVideo();
+        }
+    }
+    else
+    {
+        cout << "¡No hay series!" << endl;
+    }
+}
+
 Sistema::Sistema()
 {
-
+    
 }
 
 void Sistema::mostrarPorCalificacion(float calif)
 {
     vector <Video *> cumplen = getVideo(calif);
-    // vector <Video *> cumplenSer;
 
     
-    if (videos.size() > 0 && cumplen.size() > 0)
+    if (cumplen.size() > 0)
     {
         cout << "Sí hay películas." << endl;
         
@@ -105,24 +192,52 @@ void Sistema::mostrarPorGenero(char genero)
         escogido = "Terror";
         break;
     default:
-        throw invalid_argument("Sólo se puede escoger entre 1, 2, 3, 4 o 5");
+        throw invalid_argument("Sólo se puede escoger entre 1, 2, 3, 4 o 5.");
         break;
     }
 
+    // Donde cumplen son todos los videos que cumplen con la condición
     cumplen = getVideo(escogido);
-    
-    if (videos.size() > 0 && cumplen.size() > 0)
+    imprimir(cumplen);
+}
+
+void Sistema::mostrarPorTIpo(char tipo)
+{
+    // tipo debe de ser o '1' para películas, o '2' para series
+    vector<Pelicula *>pelEscogidas;
+    vector<Serie *>serEscogidas;
+
+    switch (tipo)
     {
-        cout << "Sí hay películas." << endl;
-        
-        for (int i=0; i<cumplen.size(); ++i)
-        {
-            cumplen[i]->mostrarVideo();
-        }
+    case '1':
+        pelEscogidas = getPeliculas();
+        imprimir(pelEscogidas);
+        break;
+    case '2':
+        serEscogidas = getSeries();
+        imprimir(serEscogidas);
+        break;
+    default:
+        throw invalid_argument("Sólo se puede escoger entre 1 o 2.");
+        break;    
     }
-    else
+}
+
+void Sistema::mostrarEpisodios(string id)
+{
+    // Busca todas las series almacenadas
+    vector<Serie *> series;
+    vector<Serie *>::iterator it;
+    series = getSeries();
+
+    for (it = series.begin(); (*it)!=nullptr; it++)
     {
-        cout << "¡No hay videos!" << endl;
+        if ((*it)->getID() == id)
+        {
+            (*it)->mostrarVideo();
+            (*it)->mostrarEpisodios();
+            
+        }
     }
 }
 
@@ -154,7 +269,12 @@ void Sistema::guardarAArchivo(string direccion, string datos)
     archivo.close();
 }
 
-void Sistema::guardarASistema(Video &video)
+void Sistema::guardarASistema(Pelicula &pelicula)
 {
-    videos.push_back(&video);
+    peliculas.push_back(&pelicula);
+}
+
+void Sistema::guardarASistema(Serie &serie)
+{
+    series.push_back(&serie);
 }
