@@ -17,7 +17,8 @@ class Sistema
 
     private:
 
-        vector<Video *> getVideoCalif(float calif);
+        vector<Video *> getVideo(float calif);
+        vector<Video *> getVideo(string genero);
 
     public:
         Sistema();
@@ -27,7 +28,7 @@ class Sistema
         void guardarAArchivo(string direccion, string datos);
         void guardarASistema(Video &video);
         void mostrarPorCalificacion(float calif);
-        void mostrarPorGenero(string genero);
+        void mostrarPorGenero(char genero);
 
 };
 
