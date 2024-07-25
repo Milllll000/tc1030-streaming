@@ -1,4 +1,5 @@
 #include "Serie.h"
+#include <iostream>
 
 void Serie::datosToString()
 {
@@ -10,6 +11,7 @@ void Serie::datosToString()
 Serie::Serie() : Video()
 {
     // Valores default del constructor
+    nombre = "Potato";
     numEpisodios = 0;
     datosToString();
 }
@@ -24,17 +26,29 @@ Serie::Serie(string id, string nombre, string genero) : Video()
     datosToString();
 }
 
+list<Episodio *> Serie::getEpisodios()
+{
+    return episodios;
+}
+
 void Serie::agregarEpisodio(Episodio agregar)
 {
+    agregar.mostrarVideo();
+    cout << agregar.getDatosString() << endl;
     episodios.push_back(&agregar);
 }
 
 void Serie::mostrarEpisodios()
 {
-    list<Episodio *>::iterator aux = episodios.begin();
-    while (*aux != nullptr)
+    list<Episodio *>::iterator it;
+    // while (aux != episodios.end())
+    // {
+    //     (*aux)->mostrarVideo();
+    //     aux++;
+    // }
+    for (it = episodios.begin(); it != episodios.end(); it++)
     {
-        (*aux)->mostrarVideo();
+        (*it)->mostrarVideo();
     }
 }
 

@@ -17,13 +17,33 @@ int main(int argc, char const *argv[])
 
     p1.agregarCalificacion(5.0f);
     s1.agregarCalificacion(5.0f);
+    
     p1.setGenero("Acción");
     p2.setGenero("Comedia");
     s1.setGenero("Musical");
     s2.setGenero("Terror");
 
+    s1.setID("0001");
+    s2.setID("0002");
+
     sistema.guardarASistema(p1);
     sistema.guardarASistema(p2);
+
+    Episodio e1;
+    Episodio e2("Dominica", "0900", "40:00", 1);
+
+    e1.mostrarVideo();
+
+    s1.agregarEpisodio(e1);
+    s1.agregarEpisodio(e2);
+    s1.mostrarEpisodios();
+    s1.agregarEpisodio(e1);
+    s1.agregarEpisodio(e1);
+    s1.agregarEpisodio(e1);
+    s1.agregarEpisodio(e1);
+    s1.agregarEpisodio(e1);
+
+    
     sistema.guardarASistema(s1);
     sistema.guardarASistema(s2);
     
@@ -84,10 +104,19 @@ int main(int argc, char const *argv[])
         }
         case 6:
         {
-            string input;
+            string id;
             sistema.mostrarPorTIpo('2');
             cout << "Ingrese ID de la serie deseada: ";
-            cin >> input;
+            cin >> id;
+            try
+            {
+                sistema.mostrarEpisodios(id);
+            }
+            catch(invalid_argument& e)
+            {
+                cout << e.what() << endl;
+            }
+            
             break;
         }
         default:

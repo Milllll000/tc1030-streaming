@@ -11,5 +11,6 @@ private:
 
 public:
     Episodio();
+    Episodio(string nombre, string id, string duracion, int continuidad);
     string getTipoVideo();
 };

@@ -18,6 +18,15 @@ Episodio::Episodio() : Video()
     datosToString();
 }
 
+Episodio::Episodio(string nombre, string id, string duracion, int continuidad)
+{
+    this->nombre = nombre;
+    this->id = id;
+    this->duracion = duracion;
+    this->continuidad = continuidad;
+    datosToString();
+}
+
 string Episodio::getTipoVideo()
 {
     return "Episodio";

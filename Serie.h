@@ -18,6 +18,9 @@ protected:
 public:
     Serie();
     Serie(string id, string nombre, string genero);
+
+    list<Episodio *> getEpisodios();
+
     void agregarEpisodio(Episodio agregar);
     void mostrarEpisodios();
     string getTipoVideo();

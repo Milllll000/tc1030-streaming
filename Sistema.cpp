@@ -225,20 +225,39 @@ void Sistema::mostrarPorTIpo(char tipo)
 
 void Sistema::mostrarEpisodios(string id)
 {
+    // id debe de ser de 4 dígitos
     // Busca todas las series almacenadas
     vector<Serie *> series;
     vector<Serie *>::iterator it;
+    Serie* escogida;
     series = getSeries();
 
-    for (it = series.begin(); (*it)!=nullptr; it++)
+    for (it = series.begin(); it!=series.end(); ++it)
     {
         if ((*it)->getID() == id)
         {
-            (*it)->mostrarVideo();
-            (*it)->mostrarEpisodios();
-            
+            escogida = *it; 
+            break;
         }
     }
+
+    if (escogida == nullptr)
+    {
+        throw invalid_argument("Serie no encontrada.");
+    }
+
+
+    escogida->mostrarVideo();
+    // Va a iterar en cada episodio de la serie escogida y lo va a imprimir
+    
+    list<Episodio *>episodios = escogida->getEpisodios();
+    list<Episodio *>::iterator episIt;
+
+    for (episIt = episodios.begin(); episIt != episodios.end(); episIt++)
+    {
+        
+    }
+        
 }
 
 void Sistema::cargarArchivo(string direccion)
