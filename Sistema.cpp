@@ -201,7 +201,7 @@ void Sistema::mostrarPorGenero(char genero)
     imprimir(cumplen);
 }
 
-void Sistema::mostrarPorTIpo(char tipo)
+void Sistema::mostrarPorTipo(char tipo)
 {
     // tipo debe de ser o '1' para películas, o '2' para series
     vector<Pelicula *>pelEscogidas;

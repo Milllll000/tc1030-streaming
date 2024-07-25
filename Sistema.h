@@ -13,7 +13,6 @@ using namespace std;
 class Sistema
 {
     private:
-        // vector<Video *> videos;
         vector<Pelicula *> peliculas;
         vector<Serie *> series;
 
@@ -37,9 +36,8 @@ class Sistema
         void guardarASistema(Serie &serie);
         void mostrarPorCalificacion(float calif);
         void mostrarPorGenero(char genero);
-        void mostrarPorTIpo(char tipo);
+        void mostrarPorTipo(char tipo);
         void mostrarEpisodios(string id);
-
 };
 
 #endif
