@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
     p1.agregarCalificacion(5.0f);
     s1.agregarCalificacion(5.0f);
     
-    p1.setGenero("Acción");
+    p1.setGenero("Accion");
     p2.setGenero("Comedia");
     s1.setGenero("Musical");
     s2.setGenero("Terror");
@@ -32,11 +32,8 @@ int main(int argc, char const *argv[])
     Episodio e1;
     Episodio e2("Dominica", "0900", "40:00", 1);
 
-    e1.mostrarVideo();
-
     s1.agregarEpisodio(e1);
     s1.agregarEpisodio(e2);
-    s1.mostrarEpisodios();
     s1.agregarEpisodio(e1);
     s1.agregarEpisodio(e1);
     s1.agregarEpisodio(e1);
@@ -51,12 +48,12 @@ int main(int argc, char const *argv[])
     {
         int input = 0;
         
-        cout << "Sistema de películas y series en la plataforma de streaming Teneiga." << endl;
+        cout << "Sistema de peliculas y series en la plataforma de streaming Teneiga." << endl;
         cout << "Para mostrar todo el contenido disponible, ingrese 1." << endl;
-        cout << "Para mostrar el contenido que tenga una calificación igual o mayor a la ingresada, ingrese 2." << endl;
-        cout << "Para mostrar contenido por género, ingrese 3." << endl;
-        cout <<  "Para mostrar sólo películas, ingrese 4." << endl;
-        cout <<  "Para mostrar sólo series, ingrese 5." << endl;
+        cout << "Para mostrar el contenido que tenga una calificacion igual o mayor a la ingresada, ingrese 2." << endl;
+        cout << "Para mostrar contenido por genero, ingrese 3." << endl;
+        cout << "Para mostrar solo peliculas, ingrese 4." << endl;
+        cout << "Para mostrar solo series, ingrese 5." << endl;
         cout << "Para mostrar episodios de una serie, ingrese 6." << endl;
 
         cin >> input;
@@ -72,7 +69,7 @@ int main(int argc, char const *argv[])
         {
             float calif;
             calif = 0.0f;
-            cout << "Ingrese la calificación mínima: ";
+            cout << "Ingrese la calificacion minima: ";
             cin >> calif;
             sistema.mostrarPorCalificacion(calif);
             break;
@@ -80,7 +77,7 @@ int main(int argc, char const *argv[])
         case 3:
         {
             char genero;
-            cout << "- Acción: 1\n- Comedia: 2\n- Misterio: 3\n- Musical: 4\n- Terror: 5" << endl;
+            cout << "- Accion: 1\n- Comedia: 2\n- Misterio: 3\n- Musical: 4\n- Terror: 5" << endl;
             cin >> genero;
             try
             {
@@ -94,18 +91,18 @@ int main(int argc, char const *argv[])
         }
         case 4:
         {
-            sistema.mostrarPorTIpo('1');
+            sistema.mostrarPorTipo('1');
             break;
         }
         case 5:
         {
-            sistema.mostrarPorTIpo('2');   
+            sistema.mostrarPorTipo('2');   
             break;
         }
         case 6:
         {
             string id;
-            sistema.mostrarPorTIpo('2');
+            sistema.mostrarPorTipo('2');
             cout << "Ingrese ID de la serie deseada: ";
             cin >> id;
             try

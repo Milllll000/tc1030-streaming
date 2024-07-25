@@ -33,8 +33,6 @@ list<Episodio *> Serie::getEpisodios()
 
 void Serie::agregarEpisodio(Episodio agregar)
 {
-    agregar.mostrarVideo();
-    cout << agregar.getDatosString() << endl;
     episodios.push_back(&agregar);
 }
 

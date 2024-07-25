@@ -10,34 +10,26 @@ vector<Video *> Sistema::getVideo(float calif)
 // Busca la película que tiene la calificación solicitada o mayor
 // calif debe de ser igual o mayor a 0
 {
-    cout << "Función se llama" << endl;
     vector<Video *> cumplen;
     
     // Para películas
     for (int i=0; i<peliculas.size(); ++i)
     {
-        cout << "Loop inicia" << endl;
         // Si el video cumple la condición, se agrega al vector
         if (peliculas[i]->getCalificacionPromedio() >= calif)
         {
-            cout << "Cumple condición" << endl;
             cumplen.push_back(peliculas[i]);
         }
     }
     // Para series
     for (int i=0; i<series.size(); ++i)
     {
-        cout << "Loop inicia" << endl;
         // Si el video cumple la condición, se agrega al vector
         if (series[i]->getCalificacionPromedio() >= calif)
         {
-            cout << "Cumple condición" << endl;
             cumplen.push_back(series[i]);
         }
     }
-
-    cout << "Loop finaliza" << endl;
-    cout << "Función finaliza" << endl;
 
     return cumplen;
 }
@@ -46,33 +38,26 @@ vector<Video *> Sistema::getVideo(string genero)
 // Busca el contenido que coincida con el género solicitado
 // genero debe de ser uno de ser o "Acción", o "Comedia", o "Misterio", o "Musical", o "Terror"
 {
-    cout << "Función se llama" << endl;
     vector<Video *> cumplen;
 
     // Para películas
     for (int i=0; i<peliculas.size(); ++i)
     {
-        cout << "Loop inicia" << endl;
         // Si el video cumple la condición, se agrega al vector
         if (peliculas[i]->getGenero() == genero)
         {
-            cout << "Cumple condición" << endl;
             cumplen.push_back(peliculas[i]);
         }
     }
     // Para series
     for (int i=0; i<series.size(); ++i)
     {
-        cout << "Loop inicia" << endl;
         // Si el video cumple la condición, se agrega al vector
         if (series[i]->getGenero() == genero)
         {
-            cout << "Cumple condición" << endl;
             cumplen.push_back(series[i]);
         }
     }
-    cout << "Loop finaliza" << endl;
-    cout << "Función finaliza" << endl;
 
     return cumplen;
 }
@@ -90,9 +75,7 @@ vector<Serie *> Sistema::getSeries()
 void Sistema::imprimir(vector<Video *> seleccionado)
 {
     if (seleccionado.size() > 0)
-    {
-        cout << "Sí hay videos." << endl;
-        
+    {        
         for (int i=0; i<seleccionado.size(); ++i)
         {
             seleccionado[i]->mostrarVideo();
@@ -107,9 +90,7 @@ void Sistema::imprimir(vector<Video *> seleccionado)
 void Sistema::imprimir(vector<Pelicula *> seleccionado)
 {
     if (seleccionado.size() > 0)
-    {
-        cout << "Sí hay películas." << endl;
-        
+    {        
         for (int i=0; i<seleccionado.size(); ++i)
         {
             seleccionado[i]->mostrarVideo();
@@ -124,9 +105,7 @@ void Sistema::imprimir(vector<Pelicula *> seleccionado)
 void Sistema::imprimir(vector<Serie *> seleccionado)
 {
     if (seleccionado.size() > 0)
-    {
-        cout << "Sí hay series." << endl;
-        
+    {        
         for (int i=0; i<seleccionado.size(); ++i)
         {
             seleccionado[i]->mostrarVideo();
@@ -147,10 +126,8 @@ void Sistema::mostrarPorCalificacion(float calif)
 {
     vector <Video *> cumplen = getVideo(calif);
 
-    
     if (cumplen.size() > 0)
     {
-        cout << "Sí hay películas." << endl;
         
         for (int i=0; i<cumplen.size(); ++i)
         {
@@ -177,7 +154,7 @@ void Sistema::mostrarPorGenero(char genero)
     switch (genero)
     {
     case '1':
-        escogido = "Acción";
+        escogido = "Accion";
         break;
     case '2':
         escogido = "Comedia";
@@ -192,7 +169,7 @@ void Sistema::mostrarPorGenero(char genero)
         escogido = "Terror";
         break;
     default:
-        throw invalid_argument("Sólo se puede escoger entre 1, 2, 3, 4 o 5.");
+        throw invalid_argument("Solo se puede escoger entre 1, 2, 3, 4 o 5.");
         break;
     }
 
@@ -218,7 +195,7 @@ void Sistema::mostrarPorTipo(char tipo)
         imprimir(serEscogidas);
         break;
     default:
-        throw invalid_argument("Sólo se puede escoger entre 1 o 2.");
+        throw invalid_argument("Solo se puede escoger entre 1 o 2.");
         break;    
     }
 }
